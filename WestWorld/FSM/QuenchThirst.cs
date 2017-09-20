@@ -36,6 +36,11 @@ namespace WestWorld.FSM
             Console.WriteLine("That's mighty fine sippin liquor");
             miner.ChangeState(EnterMineAndDigState.Instance());
         }
+
+        public override bool OnMessage(Miner entity, Telegram telegram)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

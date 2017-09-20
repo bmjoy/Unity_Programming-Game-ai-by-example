@@ -45,5 +45,10 @@ namespace WestWorld.FSM
                 miner.ChangeState(EnterMineAndDigState.Instance());
             }
         }
+
+        public override bool OnMessage(Miner entity, Telegram telegram)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

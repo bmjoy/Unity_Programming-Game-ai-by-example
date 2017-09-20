@@ -24,6 +24,9 @@ namespace WestWorld.FSM
 
         public override void Enter(Miner miner)
         {
+            MessageDispatcher dispatcher = MessageDispatcher.Instance();
+            dispatcher.DispatchMessage(0, 1, 2, MessageType.HiHoneyImHome, null);
+
             Console.WriteLine("Woohoo! Rich enough for now. Back home to mah li'l day");
             Console.WriteLine("Wakin' home");
         }
@@ -40,6 +43,11 @@ namespace WestWorld.FSM
             Console.WriteLine("ZZZZZ");
             Console.WriteLine("ZZZZZ");
             miner.ChangeState(EnterMineAndDigState.Instance());
+        }
+
+        public override bool OnMessage(Miner entity, Telegram telegram)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,6 +22,6 @@ namespace WestWorld
 
     public class Args
     {
-
+        public const String No_Additionnal_Info = "";
     }
 }

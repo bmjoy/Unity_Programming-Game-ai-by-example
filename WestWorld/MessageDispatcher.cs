@@ -23,12 +23,13 @@ namespace WestWorld
             priorityQueue = new SimplePriorityQueue<Telegram>();
         }
 
-
+        //Send message
         public void Discharge(BaseEntity receiver, Telegram msg)
         {
-
+            receiver.HandleMessage(msg);
         }
 
+        //In every loop, we will call this function to make sure there are message to send
         public void DispatchDelayedMessages()
         {
             int currentTime = DateTime.Now.Millisecond;
@@ -45,6 +46,7 @@ namespace WestWorld
 
         }
 
+        //Add message to message center
         public void DispatchMessage(int delay,
                                     int sender,
                                     int receiver,

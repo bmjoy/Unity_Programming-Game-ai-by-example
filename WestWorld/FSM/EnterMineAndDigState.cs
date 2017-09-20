@@ -53,5 +53,10 @@ namespace WestWorld.FSM
                 }
             }
         }
+
+        public override bool OnMessage(Miner entity, Telegram telegram)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

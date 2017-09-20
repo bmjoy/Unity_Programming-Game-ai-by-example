@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace WestWorld
 {
     public class EntityManager
     {
-        Dictionary<int, BaseEntity> entityMap;
+        Dictionary<int, BaseEntity> entityMap = new Dictionary<int, BaseEntity>();
 
         //Singleton
         static EntityManager instance = null;

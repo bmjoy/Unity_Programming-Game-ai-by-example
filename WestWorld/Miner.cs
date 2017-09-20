@@ -21,7 +21,6 @@ namespace WestWorld
         int maxThirst = 3;
 
         public int fatigue = 0;
-        int maxFatigue = 4;
 
         public Miner(int id) : base(id)
         {

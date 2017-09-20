@@ -4,7 +4,8 @@ namespace WestWorld
 {
     public class Game
     {
-        EntityManager entityMgr;
+        EntityManager entityMgr = EntityManager.Instance();
+        MessageDispatcher dispatcher = MessageDispatcher.Instance();
 
         public Game()
         {
@@ -21,7 +22,15 @@ namespace WestWorld
             while (flag)
             {
                 Thread.Sleep(1000);
-                //miner.Update();
+
+                //check message
+                dispatcher.DispatchDelayedMessages();
+
+                Miner miner = entityMgr.GetEntity(1) as Miner;
+                miner.Update();
+
+                Wife wife = entityMgr.GetEntity(2) as Wife;
+                wife.Update();
             }
         }
 
