@@ -25,7 +25,7 @@ namespace WestWorld
         public Miner(int id) : base(id)
         {
             this.stateMachine = new StateMachine<Miner>(this);
-            this.stateMachine.SetCurrentState(GoHomeAndSleepTilRes.Instance());
+            this.stateMachine.SetCurrentState(EnterMineAndDigState.Instance());
             this.stateMachine.SetGlobalState(MinerGlobalState.Instance());
         }
 
@@ -90,6 +90,7 @@ namespace WestWorld
         public void Sleep()
         {
             this.fatigue = 0;
+            Console.WriteLine("ZZZZZ");
         }
 
         public void Drink()

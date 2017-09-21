@@ -47,24 +47,30 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Consts.cs" />
-    <Compile Include="EntityManager.cs" />
-    <Compile Include="FSM\EnterMineAndDigState.cs" />
-    <Compile Include="FSM\GoHomeAndSleepTilRes.cs" />
-    <Compile Include="FSM\MinerGlobalState.cs" />
-    <Compile Include="FSM\QuenchThirst.cs" />
-    <Compile Include="FSM\VisitBankAndDepositGold.cs" />
+    <Compile Include="Util\EntityManager.cs" />
+    <Compile Include="Wife\State\CookStew.cs" />
+    <Compile Include="Wife\State\DoHouseWork.cs" />
+    <Compile Include="Wife\State\EatStew.cs" />
+    <Compile Include="Miner\State\EnterMineAndDigState.cs" />
+    <Compile Include="Miner\State\GoHomeAndSleepTilRes.cs" />
+    <Compile Include="Miner\State\MinerGlobalState.cs" />
+    <Compile Include="Miner\State\QuenchThirst.cs" />
+    <Compile Include="Miner\State\VisitBankAndDepositGold.cs" />
+    <Compile Include="Wife\State\VisitBathroom.cs" />
+    <Compile Include="Wife\State\WifeGlobalState.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="MessageDispatcher.cs" />
-    <Compile Include="Miner.cs" />
+    <Compile Include="Util\MessageDispatcher.cs" />
+    <Compile Include="Miner\Miner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FSM\State.cs" />
     <Compile Include="FSM\StateMachine.cs" />
-    <Compile Include="Telegram.cs" />
-    <Compile Include="Wife.cs" />
+    <Compile Include="Util\Telegram.cs" />
+    <Compile Include="Wife\Wife.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

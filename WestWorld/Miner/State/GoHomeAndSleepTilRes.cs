@@ -25,10 +25,11 @@ namespace WestWorld.FSM
         public override void Enter(Miner miner)
         {
             MessageDispatcher dispatcher = MessageDispatcher.Instance();
-            dispatcher.DispatchMessage(0, 1, 2, MessageType.HiHoneyImHome, null);
-
             Console.WriteLine("Woohoo! Rich enough for now. Back home to mah li'l day");
             Console.WriteLine("Wakin' home");
+
+            Console.WriteLine("Message send by " + miner.id + " at time : " + DateTime.Now);
+            dispatcher.DispatchMessage(0, 1, 2, MessageType.HiHoneyImHome, null);
         }
 
         public override void Exit(Miner miner)
@@ -39,15 +40,20 @@ namespace WestWorld.FSM
         public override void Execute(Miner miner)
         {
             miner.Sleep();
-            Console.WriteLine("ZZZZZ");
-            Console.WriteLine("ZZZZZ");
-            Console.WriteLine("ZZZZZ");
-            miner.ChangeState(EnterMineAndDigState.Instance());
         }
 
-        public override bool OnMessage(Miner entity, Telegram telegram)
+        public override bool OnMessage(Miner miner, Telegram msg)
         {
-            throw new NotImplementedException();
+            switch(msg.type)
+            {
+                case MessageType.StewReady:
+                    Console.WriteLine("Message received by " + miner.id + " at time: " + DateTime.Now);
+                    Console.WriteLine(miner.id + ": Okay hum, ahm a-comin'!");
+
+                    miner.ChangeState(EatStew.Instance());
+                    return true;
+            }
+            return false;
         }
     }
 }

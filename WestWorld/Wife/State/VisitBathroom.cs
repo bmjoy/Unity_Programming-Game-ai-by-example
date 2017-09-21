@@ -6,21 +6,30 @@ using System.Threading.Tasks;
 
 namespace WestWorld.FSM
 {
-    class DoHouseWork : State<Wife>
+    public class VisitBathroom : State<Wife>
     {
+        static VisitBathroom instance = null;
+        private VisitBathroom() { }
+
+        public static VisitBathroom Instance()
+        {
+            if (instance == null)
+            {
+                instance = new VisitBathroom();
+            }
+            return instance;
+        }
+
         public override void Enter(Wife entity)
         {
-            throw new NotImplementedException();
         }
 
         public override void Execute(Wife entity)
         {
-            throw new NotImplementedException();
         }
 
         public override void Exit(Wife entity)
         {
-            throw new NotImplementedException();
         }
 
         public override bool OnMessage(Wife entity, Telegram telegram)

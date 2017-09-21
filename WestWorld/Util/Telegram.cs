@@ -7,7 +7,7 @@ namespace WestWorld
         public int sender;
         public int receiver;
         public MessageType type;
-        public int dispatchTime; //if a delay is necessary, this field is stamped with the time the message should be dispatched
+        public long dispatchTime; //if a delay is necessary, this field is stamped with the time the message should be dispatched
         public Args args;
     }
 }

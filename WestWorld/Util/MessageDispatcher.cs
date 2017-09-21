@@ -7,7 +7,7 @@ namespace WestWorld
     {
         //Singleton
         static MessageDispatcher instance = null;
-        SimplePriorityQueue<Telegram> priorityQueue;
+        SimplePriorityQueue<Telegram> priorityQueue = new SimplePriorityQueue<Telegram>();
 
         public static MessageDispatcher Instance()
         {
@@ -18,10 +18,7 @@ namespace WestWorld
             return instance;
         }
 
-        MessageDispatcher()
-        {
-            priorityQueue = new SimplePriorityQueue<Telegram>();
-        }
+        MessageDispatcher() { }
 
         //Send message
         public void Discharge(BaseEntity receiver, Telegram msg)
@@ -32,11 +29,11 @@ namespace WestWorld
         //In every loop, we will call this function to make sure there are message to send
         public void DispatchDelayedMessages()
         {
-            int currentTime = DateTime.Now.Millisecond;
+            long currentTime = DateTimeOffset.Now.ToUnixTimeSeconds();
 
             if (priorityQueue.Count > 0)
             {
-                while (priorityQueue.First.dispatchTime > 0 && priorityQueue.First.dispatchTime < currentTime)
+                while (priorityQueue.Count > 0 && priorityQueue.First.dispatchTime > 0 && priorityQueue.First.dispatchTime < currentTime)
                 {
                     Telegram telegram = priorityQueue.Dequeue();
                     BaseEntity receiver = EntityManager.Instance().GetEntity(telegram.sender);
@@ -47,7 +44,7 @@ namespace WestWorld
         }
 
         //Add message to message center
-        public void DispatchMessage(int delay,
+        public void DispatchMessage(float delay,
                                     int sender,
                                     int receiver,
                                     MessageType msg,
@@ -72,7 +69,7 @@ namespace WestWorld
             else
             {
                 //Send the telegram to the recipient
-                telegram.dispatchTime = DateTime.Now.Add(TimeSpan.FromMilliseconds(delay)).Millisecond;
+                telegram.dispatchTime = DateTimeOffset.Now.Add(TimeSpan.FromMilliseconds(delay * 1000)).ToUnixTimeSeconds();
                 this.priorityQueue.Enqueue(telegram, telegram.dispatchTime);
             }
 

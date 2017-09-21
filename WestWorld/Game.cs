@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace WestWorld
 {
@@ -38,6 +39,8 @@ namespace WestWorld
         {
             Game game = new Game();
             game.Update();
+
+            Console.ReadKey();
         }
     }
 }

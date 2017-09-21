@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WestWorld.FSM
 {
@@ -56,7 +52,7 @@ namespace WestWorld.FSM
 
         public override bool OnMessage(Miner entity, Telegram telegram)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
